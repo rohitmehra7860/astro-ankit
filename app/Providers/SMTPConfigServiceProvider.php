@@ -23,18 +23,24 @@ class SMTPConfigServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $smtp = SMTPSetting::first();
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('smtp_settings')) {
+                $smtp = SMTPSetting::first();
 
-        if ($smtp) {
-            Config::set('mail.default', $smtp->mailer);
-            Config::set('mail.mailers.smtp.transport', $smtp->mailer);
-            Config::set('mail.mailers.smtp.host', $smtp->host);
-            Config::set('mail.mailers.smtp.port', $smtp->port);
-            Config::set('mail.mailers.smtp.encryption', $smtp->encryption);
-            Config::set('mail.mailers.smtp.username', $smtp->username);
-            Config::set('mail.mailers.smtp.password', $smtp->password);
-            Config::set('mail.from.address', $smtp->from_address);
-            Config::set('mail.from.name', $smtp->from_name);
+                if ($smtp) {
+                    Config::set('mail.default', $smtp->mailer);
+                    Config::set('mail.mailers.smtp.transport', $smtp->mailer);
+                    Config::set('mail.mailers.smtp.host', $smtp->host);
+                    Config::set('mail.mailers.smtp.port', $smtp->port);
+                    Config::set('mail.mailers.smtp.encryption', $smtp->encryption);
+                    Config::set('mail.mailers.smtp.username', $smtp->username);
+                    Config::set('mail.mailers.smtp.password', $smtp->password);
+                    Config::set('mail.from.address', $smtp->from_address);
+                    Config::set('mail.from.name', $smtp->from_name);
+                }
+            }
+        } catch (\Throwable $e) {
+            // Ignore connection or table-not-found exceptions during console/build stages
         }
     }
 }

@@ -31,8 +31,14 @@ class AppServiceProvider extends ServiceProvider
         app()->register(SMTPConfigServiceProvider::class);
         Paginator::useBootstrap();
 
-        $settings = Setting::first();
-        View::share(['settings' => $settings]);
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('settings')) {
+                $settings = Setting::first();
+                View::share(['settings' => $settings]);
+            }
+        } catch (\Throwable $e) {
+            // Ignore connection or table-not-found exceptions during console/build stages
+        }
 
         View::composer(['layouts.front'], function ($view) {
             $nav_services = Service::take(6)->get();
