@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (config('app.env') === 'production') {
+        if (config('app.env') === 'production' && str_starts_with(config('app.url'), 'https://')) {
             \Illuminate\Support\Facades\URL::forceRootUrl(config('app.url'));
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         View::share(['settings' => $settings]);
 
         View::composer(['layouts.front'], function ($view) {
-            $nav_services = Service::get();
+            $nav_services = Service::take(6)->get();
             $footer_nav_services = Service::take(5)->get();
             $view->with([
                 'nav_services' => $nav_services,

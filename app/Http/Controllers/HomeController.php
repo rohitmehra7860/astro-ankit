@@ -182,7 +182,7 @@ class HomeController extends Controller
         $meta_keywords = $service->meta_keywords;
         $zodiacSigns = ZodiacSign::get();
         $testimonials = Testimonial::get();
-        $blogs = Blog::get();
+        $blogs = Blog::take(6)->get();
         return view('front.single-service', compact('service', 'title', 'meta_tags', 'meta_title', 'meta_description', 'meta_keywords', 'zodiacSigns', 'testimonials', 'blogs'));
     }
 
