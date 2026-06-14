@@ -1,0 +1,10 @@
+/* 1. First, import Bootstrap so its foundation variables are loaded */
+@import './bootstrap.min.css';
+
+/* 2. Next, load Tailwind's core styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Finally, load your custom style.css so it can override anything above it */
+@import './style.css';

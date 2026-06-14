@@ -1,0 +1,13 @@
+.git
+.env
+node_modules
+vendor
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/testing/*
+storage/framework/views/*
+storage/logs/*
+u614369820_astro_ankit.sql
+docker-compose.yml
+Dockerfile
+.dockerignore
