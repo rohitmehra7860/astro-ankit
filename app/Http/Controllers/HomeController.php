@@ -225,21 +225,20 @@ class HomeController extends Controller
             'email' => 'required|email:rfc,dns|max:255',
             'phone' => [
                 'required',
-                'regex:/^(\+91[\-\s]?|0)?[6-9]\d{9}$/'
             ],
             'message' => 'required',
         ]);
 
 
         // Normalize phone
-        $phone = preg_replace('/[^0-9]/', '', $validated['phone']);
-        if (strlen($phone) === 11 && substr($phone, 0, 1) === '0') {
-            $phone = substr($phone, 1);
-        }
-        if (strlen($phone) === 12 && substr($phone, 0, 2) === '91') {
-            $phone = substr($phone, 2);
-        }
-        $validated['phone'] = $phone;
+        // $phone = preg_replace('/[^0-9]/', '', $validated['phone']);
+        // if (strlen($phone) === 11 && substr($phone, 0, 1) === '0') {
+        //     $phone = substr($phone, 1);
+        // }
+        // if (strlen($phone) === 12 && substr($phone, 0, 2) === '91') {
+        //     $phone = substr($phone, 2);
+        // }
+        // $validated['phone'] = $phone;
 
         // Store to DB
         $enquiry = Enquiry::create($validated);
