@@ -33,21 +33,25 @@
                             <form action="{{ route('enquiry') }}" method="post">
                                 @csrf
                                 <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" id="" class="form-control py-0 px-2" placeholder="Your full name">
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="text" name="email" id="" class="form-control py-0 px-2" placeholder="your@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label>Phone No.</label>
-                            <input type="text" name="phone" id="" class="form-control py-0 px-2" placeholder="+91 XXXXX XXXXX">
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="message" id="" class="form-control py-0 px-2" placeholder="Briefly describe what guidance you're seeking..."></textarea>
-                        </div>
+                                    <label>Full Name</label>
+                                    <input type="text" name="name" id="" class="form-control py-0 px-2"
+                                        placeholder="Your full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="text" name="email" id="" class="form-control py-0 px-2"
+                                        placeholder="your@email.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone No.</label>
+                                    <input type="text" name="phone" id="" class="form-control py-0 px-2"
+                                        placeholder="+91 XXXXX XXXXX" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Message</label>
+                                    <textarea name="message" id="" class="form-control py-0 px-2"
+                                        placeholder="Briefly describe what guidance you're seeking..." required></textarea>
+                                </div>
                                 <button type="submit" class="as_btn">Submit</button>
                             </form>
                         </div>

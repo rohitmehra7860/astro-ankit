@@ -16,10 +16,11 @@
                                     <h5>Call Us</h5>
                                     @foreach ($settings->contact_phones as $item)
                                         <p class="as_margin0 as_font14">
-                                            <a target="_blank" href="https://wa.me/{{ $settings->whatsapp_number }}?text=Hello {{ $settings->site_name }}">
+                                            <a target="_blank"
+                                                href="https://wa.me/{{ $settings->whatsapp_number }}?text=Hello {{ $settings->site_name }}">
                                                 {{ $item }}
                                             </a>
-                                            </p>
+                                        </p>
                                     @endforeach
                                 </div>
                             </div>
@@ -31,8 +32,8 @@
                                 <div class="as_info">
                                     <h5>Mail Us</h5>
                                     @foreach ($settings->contact_emails as $item)
-                                        <p class="as_margin0 as_font14"><a
-                                                href="mailto:{{ $item }}" aria-label="Email">{{ $item }}</a></p>
+                                        <p class="as_margin0 as_font14"><a href="mailto:{{ $item }}"
+                                                aria-label="Email">{{ $item }}</a></p>
                                     @endforeach
                                 </div>
                             </div>
@@ -47,19 +48,23 @@
                         @csrf
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" name="name" id="" class="form-control" placeholder="Your full name">
+                            <input type="text" name="name" id="" class="form-control"
+                                placeholder="Your full name" required>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="text" name="email" id="" class="form-control" placeholder="your@email.com">
+                            <input type="text" name="email" id="" class="form-control"
+                                placeholder="your@email.com" required>
                         </div>
                         <div class="form-group">
                             <label>Phone No.</label>
-                            <input type="text" name="phone" id="" class="form-control" placeholder="+91 XXXXX XXXXX">
+                            <input type="text" name="phone" id="" class="form-control"
+                                placeholder="+91 XXXXX XXXXX" required>
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea name="message" id="" class="form-control" placeholder="Briefly describe what guidance you're seeking..."></textarea>
+                            <textarea name="message" id="" class="form-control"
+                                placeholder="Briefly describe what guidance you're seeking..." required></textarea>
                         </div>
                         <button type="submit" class="as_btn">Submit</button>
                     </form>
